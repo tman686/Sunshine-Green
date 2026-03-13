@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunshine State Lawn Care | Lakeland, FL 33811</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-dark: #1a3a1f;
+    --green-mid: #2d5a34;
+    --green-bright: #4a9957;
+    --lime: #a8d96c;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --gold: #c9a227;
+    --brown: #6b4226;
+    --text-dark: #1a1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26,58,31,0.97);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 70px;
+    border-bottom: 2px solid var(--lime);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--lime);
+    letter-spacing: 0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--lime); }
+  .nav-cta {
+    background: var(--lime);
+    color: var(--green-dark) !important;
+    padding: 8px 20px !important;
+    border-radius: 2px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--warm-white) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(to bottom, rgba(10,30,12,0.72) 0%, rgba(10,30,12,0.45) 60%, rgba(245,240,232,0) 100%),
+      url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+    display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+    padding: 0 8%;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+    background: linear-gradient(to top, var(--warm-white), transparent);
+  }
+  .hero-badge {
+    background: var(--lime);
+    color: var(--green-dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+    display: inline-block;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    color: var(--warm-white);
+    line-height: 1.08;
+    max-width: 700px;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--lime);
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.85);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.2rem;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--lime);
+    color: var(--green-dark);
+    padding: 14px 32px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border: none; border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold); color: var(--warm-white); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 14px 32px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border: 2px solid rgba(245,240,232,0.5);
+    border-radius: 2px;
+    cursor: pointer; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
+
+  /* ─── TRUST BAR ─── */
+  .trust-bar {
+    background: var(--green-dark);
+    display: flex; align-items: center; justify-content: center;
+    flex-wrap: wrap; gap: 3rem;
+    padding: 1.2rem 5%;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    color: var(--cream); font-size: 0.88rem; font-weight: 500;
+  }
+  .trust-item .icon { color: var(--lime); font-size: 1.1rem; }
+
+  /* ─── SECTION SHARED ─── */
+  section { padding: 90px 8%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 3px;
+    color: var(--green-bright);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--green-dark);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; font-weight: 300; color: #555;
+    max-width: 540px; line-height: 1.75;
+  }
+
+  /* ─── SERVICES ─── */
+  .services-bg { background: var(--warm-white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .service-card {
+    background: #fff;
+    border: 1px solid #e8e2d8;
+    border-radius: 4px;
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: var(--lime);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(26,58,31,0.12); }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--green-dark), var(--green-bright));
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 1.4rem;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 0.7rem;
+  }
+  .service-card p {
+    font-size: 0.9rem; color: #666; line-height: 1.7; font-weight: 300;
+  }
+  .service-price {
+    margin-top: 1.2rem;
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--green-bright);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* ─── WHY US ─── */
+  .why-section { background: var(--green-dark); }
+  .why-section .section-title { color: var(--lime); }
+  .why-section .section-label { color: var(--gold); }
+  .why-section .section-sub { color: rgba(245,240,232,0.7); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .why-features { display: flex; flex-direction: column; gap: 1.6rem; }
+  .why-feature {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 900;
+    color: var(--lime); opacity: 0.4;
+    line-height: 1; min-width: 2.5rem;
+  }
+  .why-feature h4 {
+    font-size: 1rem; font-weight: 700; color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .why-feature p { font-size: 0.88rem; color: rgba(245,240,232,0.6); line-height: 1.65; font-weight: 300; }
+  .why-image {
+    border-radius: 4px; overflow: hidden;
+    position: relative;
+  }
+  .why-image img {
+    width: 100%; height: 420px; object-fit: cover;
+    display: block; filter: brightness(0.85) saturate(1.1);
+  }
+  .why-image-badge {
+    position: absolute; bottom: 1.5rem; left: 1.5rem;
+    background: var(--lime);
+    color: var(--green-dark);
+    padding: 12px 20px;
+    border-radius: 3px;
+    font-weight: 700; font-size: 0.85rem;
+  }
+  .why-image-badge span { display: block; font-size: 1.5rem; font-family: 'Playfair Display', serif; }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-bg { background: var(--cream); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .testimonial-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 4px;
+    border-left: 4px solid var(--lime);
+    position: relative;
+  }
+  .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .testimonial-card p {
+    font-size: 0.95rem; line-height: 1.75; color: #444;
+    font-style: italic; margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+  .reviewer { font-weight: 700; font-size: 0.85rem; color: var(--green-dark); }
+  .reviewer span { font-weight: 300; color: #888; font-size: 0.8rem; }
+
+  /* ─── SERVICE AREA ─── */
+  .area-section { background: var(--warm-white); }
+  .area-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    margin-top: 3rem;
+  }
+  .area-list {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.6rem; margin-top: 1.5rem;
+  }
+  .area-item {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.9rem; color: #444; font-weight: 400;
+  }
+  .area-item::before { content: '✓'; color: var(--green-bright); font-weight: 700; }
+  .area-map {
+    background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
+    border-radius: 4px;
+    height: 340px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .area-map::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(168,217,108,0.15) 0%, transparent 70%);
+  }
+  .area-map-pin { font-size: 3.5rem; margin-bottom: 0.8rem; }
+  .area-map h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--lime); }
+  .area-map p { font-size: 0.9rem; opacity: 0.7; margin-top: 0.3rem; }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: linear-gradient(135deg, var(--green-bright) 0%, var(--green-dark) 100%);
+    padding: 70px 8%;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .cta-banner::before {
+    content: '🌿';
+    position: absolute; font-size: 12rem; opacity: 0.05;
+    top: -2rem; left: -2rem;
+  }
+  .cta-banner::after {
+    content: '🌿';
+    position: absolute; font-size: 12rem; opacity: 0.05;
+    bottom: -2rem; right: -2rem; transform: scaleX(-1);
+  }
+  .cta-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+  }
+  .cta-banner p {
+    font-size: 1rem; color: rgba(245,240,232,0.8);
+    margin-bottom: 2rem; font-weight: 300;
+  }
+  .cta-phone {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--lime);
+    display: block; margin-bottom: 1.5rem;
+    text-decoration: none;
+  }
+  .cta-phone:hover { color: var(--gold); }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--cream); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.5fr;
+    gap: 4rem; margin-top: 3rem;
+  }
+  .contact-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--green-dark); margin-bottom: 1.2rem;
+  }
+  .contact-detail {
+    display: flex; align-items: flex-start;
+    gap: 0.8rem; margin-bottom: 1rem;
+  }
+  .contact-detail .icon { color: var(--green-bright); font-size: 1.1rem; margin-top: 2px; }
+  .contact-detail p { font-size: 0.9rem; color: #555; line-height: 1.6; font-weight: 400; }
+  .contact-detail strong { display: block; color: var(--green-dark); font-weight: 600; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 3px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-dark);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus { border-color: var(--green-bright); }
+  .contact-form textarea { height: 130px; resize: vertical; }
+  .contact-form button {
+    background: var(--green-dark);
+    color: var(--lime);
+    border: none; border-radius: 3px;
+    padding: 14px 32px;
+    font-size: 0.95rem; font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; text-transform: uppercase; letter-spacing: 1px;
+    transition: all 0.25s;
+    align-self: flex-start;
+  }
+  .contact-form button:hover { background: var(--green-bright); transform: translateY(-2px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0f2213;
+    color: rgba(245,240,232,0.6);
+    padding: 2.5rem 8%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: 0.85rem;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; color: var(--lime); font-weight: 700;
+  }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: rgba(245,240,232,0.5); text-decoration: none; font-size: 0.8rem; }
+  .footer-links a:hover { color: var(--lime); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .why-grid, .area-inner, .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .why-image { display: none; }
+    .trust-bar { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Sunshine<span>Green</span> Lawn Care</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">📍 Lakeland, FL 33811</div>
+  <h1>Your Lawn,<br><em>Perfectly Kept.</em></h1>
+  <p>Professional lawn care and landscaping for Lakeland homeowners. Licensed, insured, and rooted in the community since 2012.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Get a Free Quote</a>
+    <a href="tel:8635550182" class="btn-outline">📞 (863) 555-0182</a>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">⭐</span> 4.9 Star Rating</div>
+  <div class="trust-item"><span class="icon">✅</span> Licensed & Insured</div>
+  <div class="trust-item"><span class="icon">🏡</span> 500+ Happy Customers</div>
+  <div class="trust-item"><span class="icon">📅</span> Same-Week Service</div>
+  <div class="trust-item"><span class="icon">💰</span> No Contracts Required</div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-bg" id="services">
+  <div class="reveal">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Complete Lawn Care<br>Solutions</h2>
+    <p class="section-sub">From weekly mowing to full landscape transformations — we handle every inch of your outdoor space.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🌿</div>
+      <h3>Lawn Mowing & Edging</h3>
+      <p>Precise, weekly or bi-weekly cuts with clean edging along sidewalks, driveways, and flower beds. We leave no clippings behind.</p>
+      <p class="service-price">Starting at $45/visit</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌱</div>
+      <h3>Fertilization & Weed Control</h3>
+      <p>Florida-specific treatment programs to keep your St. Augustine, Bahia, or Zoysia grass thick, green, and weed-free year-round.</p>
+      <p class="service-price">Seasonal Programs Available</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">✂️</div>
+      <h3>Shrub & Hedge Trimming</h3>
+      <p>Expert shaping of bushes, ornamental shrubs, and hedges to enhance your home's curb appeal and keep growth controlled.</p>
+      <p class="service-price">Starting at $65/visit</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">💧</div>
+      <h3>Irrigation Services</h3>
+      <p>Installation, repair, and optimization of sprinkler systems. Conserve water while keeping your lawn perfectly hydrated in the Florida heat.</p>
+      <p class="service-price">Free System Inspection</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🍂</div>
+      <h3>Leaf & Debris Cleanup</h3>
+      <p>Thorough seasonal cleanups to clear leaves, pine needles, and yard debris — keeping your property looking spotless all year.</p>
+      <p class="service-price">Starting at $79/cleanup</p>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🌳</div>
+      <h3>Mulching & Landscaping</h3>
+      <p>Fresh mulch installation, flower bed design, sod laying, and full landscape renovations to elevate your entire property.</p>
+      <p class="service-price">Custom Quotes</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-section" id="why-us">
+  <div class="reveal">
+    <p class="section-label">Why Choose Us</p>
+    <h2 class="section-title" style="color:var(--lime)">Lakeland's Most<br>Trusted Lawn Crew</h2>
+    <p class="section-sub">We're not a national franchise. We're your neighbors — and we treat your lawn like it's our own.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-features reveal">
+      <div class="why-feature">
+        <div class="why-num">01</div>
+        <div>
+          <h4>Florida Climate Experts</h4>
+          <p>We know Polk County soil, humidity, and subtropical weather patterns. Our care plans are built for Florida lawns — not a one-size-fits-all approach.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="why-num">02</div>
+        <div>
+          <h4>Reliable, Every Time</h4>
+          <p>We show up when scheduled, rain or shine. Our consistent team knows your property and delivers the same quality visit after visit.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="why-num">03</div>
+        <div>
+          <h4>Transparent Pricing</h4>
+          <p>No hidden fees, no surprise charges. You get a clear written quote before any work begins, and we stick to it. Period.</p>
+        </div>
+      </div>
+      <div class="why-feature">
+        <div class="why-num">04</div>
+        <div>
+          <h4>Fully Licensed & Insured</h4>
+          <p>State-licensed in Florida with full liability insurance and workers' comp. You're fully protected — every single visit.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-image reveal">
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&q=80" alt="Lawn care professional at work" />
+      <div class="why-image-badge">
+        <span>12+</span> Years Serving Lakeland
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg" id="testimonials">
+  <div class="reveal">
+    <p class="section-label">Customer Reviews</p>
+    <h2 class="section-title">What Lakeland<br>Homeowners Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"My yard has never looked this good. They show up every week without me even having to think about it. Incredibly professional and the price is very fair for the quality."</p>
+      <div class="reviewer">Maria T. <span>— South Lakeland, 33811</span></div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"After trying three other companies, I finally found one that actually does what they say. My St. Augustine grass went from yellow patches to full and green in one season."</p>
+      <div class="reviewer">James R. <span>— Lakeland Highlands</span></div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"They redid my entire front landscaping and I've gotten compliments from every neighbor. Prompt, clean, and the crew was courteous throughout the whole job."</p>
+      <div class="reviewer">Sandra M. <span>— Combee Settlement</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="area-section" id="area">
+  <div class="area-inner">
+    <div class="reveal">
+      <p class="section-label">Where We Work</p>
+      <h2 class="section-title">Proudly Serving<br>Greater Lakeland</h2>
+      <p class="section-sub">We're based in the 33811 zip code and service all surrounding Lakeland neighborhoods and communities.</p>
+      <div class="area-list">
+        <div class="area-item">South Lakeland</div>
+        <div class="area-item">Lakeland Highlands</div>
+        <div class="area-item">Combee Settlement</div>
+        <div class="area-item">Medulla</div>
+        <div class="area-item">Gibsonia</div>
+        <div class="area-item">Crystal Lake</div>
+        <div class="area-item">North Lakeland</div>
+        <div class="area-item">Kathleen</div>
+        <div class="area-item">Plant City Area</div>
+        <div class="area-item">Polk City</div>
+      </div>
+    </div>
+    <div class="area-map reveal">
+      <div class="area-map-pin">📍</div>
+      <h3>Lakeland, FL</h3>
+      <p>Zip Code 33811 & Surrounding Areas</p>
+      <br>
+      <p style="font-size:0.8rem; opacity:0.5">Polk County, Florida</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready for a Beautiful Lawn?</h2>
+  <p>Call us today for a free, no-obligation estimate. Most quotes are same-day.</p>
+  <a href="tel:8635550182" class="cta-phone">(863) 555-0182</a>
+  <a href="#contact" class="btn-primary">Request Online Quote</a>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Request Your<br>Free Estimate</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>SunshineGreen Lawn Care</h3>
+      <div class="contact-detail">
+        <span class="icon">📍</span>
+        <p><strong>Service Area</strong>Lakeland, FL 33811<br>Polk County & Surrounding Areas</p>
+      </div>
+      <div class="contact-detail">
+        <span class="icon">📞</span>
+        <p><strong>Phone</strong><a href="tel:8635550182" style="color:var(--green-bright); text-decoration:none;">(863) 555-0182</a></p>
+      </div>
+      <div class="contact-detail">
+        <span class="icon">✉️</span>
+        <p><strong>Email</strong>info@sunshinegreenlawn.com</p>
+      </div>
+      <div class="contact-detail">
+        <span class="icon">🕐</span>
+        <p><strong>Hours</strong>Mon–Fri: 7am–6pm<br>Saturday: 8am–4pm</p>
+      </div>
+    </div>
+    <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <input type="text" placeholder="First Name" required />
+        <input type="text" placeholder="Last Name" required />
+      </div>
+      <div class="form-row">
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="email" placeholder="Email Address" required />
+      </div>
+      <input type="text" placeholder="Property Address" />
+      <select>
+        <option value="" disabled selected>Service Interested In</option>
+        <option>Lawn Mowing & Edging</option>
+        <option>Fertilization & Weed Control</option>
+        <option>Shrub & Hedge Trimming</option>
+        <option>Irrigation Services</option>
+        <option>Leaf & Debris Cleanup</option>
+        <option>Mulching & Landscaping</option>
+        <option>Full Property Maintenance</option>
+        <option>Other / Not Sure</option>
+      </select>
+      <textarea placeholder="Tell us about your lawn (size, current condition, specific concerns...)"></textarea>
+      <button type="submit">Send My Free Quote Request →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SunshineGreen Lawn Care</div>
+  <div>© 2025 SunshineGreen Lawn Care, LLC. Lakeland, FL 33811. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#area">Service Area</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = '✅ Request Sent! We\'ll contact you within 24 hours.';
+    btn.style.background = 'var(--green-bright)';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
